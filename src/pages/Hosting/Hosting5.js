@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { FaSwimmingPool } from 'react-icons/fa';
 import { GiBarbecue } from 'react-icons/gi';
 import { AiOutlineWifi } from 'react-icons/ai';
@@ -37,6 +38,9 @@ export default function Hosting5({ onChange, resultChoice }) {
   return (
     <Wrapper>
       <Container>
+        <Link to="/">
+          <img src="/images/로고화이트.png" />
+        </Link>
         <Text1>
           숙소 편의시설 정보를 추가해
           <br />
@@ -52,16 +56,14 @@ export default function Hosting5({ onChange, resultChoice }) {
         <Body>
           <Text2>특별히 내세울만한 편의시설이 있나요?</Text2>
           <Convenience>
-            <Button>
-              {convenience.map((el, index) => (
-                <ConvMap
-                  el={el}
-                  onChange={onChange}
-                  resultChoice={resultChoice}
-                  key={el.id}
-                />
-              ))}
-            </Button>
+            {convenience.map((el, index) => (
+              <ConvMap
+                el={el}
+                onChange={onChange}
+                resultChoice={resultChoice}
+                key={el.id}
+              />
+            ))}
           </Convenience>
         </Body>
         <Footer />
@@ -80,18 +82,22 @@ function compareResult(resultChoice, el) {
 }
 function ConvMap({ el, onChange, resultChoice }) {
   return (
-    <div key={el.id}>
-      <TextAndIcon
-        key={el.id}
-        onClick={e => onChange(e)}
-        id="5"
-        value={el.convenience}
-        type="checkbox"
-        defaultChecked={compareResult(resultChoice, el)}
-      />
-      <Icon>{selectIcon(el.icon)}</Icon>
-      <Text3>{el.convenience}</Text3>
-    </div>
+    <Button>
+      <div key={el.id}>
+        <BoxWrapper>
+          <TextAndIcon
+            key={el.id}
+            onClick={e => onChange(e)}
+            id="5"
+            value={el.convenience}
+            type="checkbox"
+            defaultChecked={compareResult(resultChoice, el)}
+          />
+          <Icon>{selectIcon(el.icon)}</Icon>
+          <Text3>{el.convenience}</Text3>
+        </BoxWrapper>
+      </div>
+    </Button>
   );
 }
 function selectIcon(el) {
@@ -138,20 +144,27 @@ const Container = styled.section`
   display: flex;
   align-items: center;
   line-height: 3.5em;
+  img {
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    margin-top: 30px;
+    margin-left: 40px;
+  }
 `;
 
 const Text1 = styled.div`
   color: white;
-  font-weight: bold;
-  font-size: 50px;
+  font-weight: 530;
+  font-size: 48.5px;
   margin-left: 55px;
 `;
 
 const Container2 = styled.section`
   width: 50%;
-  min-height: 90vh;
+  min-height: 80vh;
   position: relative;
-  /* border: 1px solid green; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -160,7 +173,7 @@ const Container2 = styled.section`
 const Header = styled.section`
   /* position: absolute;
   top: 0; */
-  /* border: 1px solid red; */
+  /* border: 1px solid blue; */
   width: 100%;
   padding: 20px;
   display: flex;
@@ -188,75 +201,72 @@ const Header = styled.section`
 
 const Body = styled.section`
   width: 100%;
+  /* border: 1px solid blue; */
   /* padding: 55px; */
 `;
 
-const Button = styled.button`
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid rgba(155, 149, 167, 0.44);
-  font-size: 18px;
-  font-weight: 500;
-  text-align: left;
-  padding: 32px;
-  width: 65%;
-  margin: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  .img-wrapper {
-    height: 100%;
-    width: 20px;
-  }
-  //   img {
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  //
-`;
-
 const Text2 = styled.div`
-  font-size: 35px;
-  font-weight: bold;
-  margin: 14px;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 55px;
+  margin-top: 40px;
 `;
 
 const Convenience = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 0fr);
-  margin: 50px 0;
-  width: 100%;
+  /* border: 1px solid red; */
+  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* grid-template-columns: repeat(3, 0fr); */
+  margin: 10px 0;
+  /* width: 100%; */
+`;
+
+const Button = styled.section`
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid rgba(155, 149, 167, 0.44);
+  text-align: left;
+  padding: 25px;
+  width: 30%;
+  margin: 8px;
+  /* display: flex; */
+`;
+
+const BoxWrapper = styled.div`
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TextAndIcon = styled.input`
   &:hover {
-    outline: 3px solid black;
+    outline: 2px solid black;
+    border-radius: 30px;
     /* outline-offset: -3px; */
     /* box-shadow: 0 0 0 2px #333 inset;*/
     cursor: pointer;
   }
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  /* height: fit-content; */
-  font-size: 30px;
-  font-weight: bolder;
-  padding: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 25px;
+  /* display: flex; */
+  /* padding: 40px; */
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  /* border-radius: 25px; */
   margin: 15px;
 `;
 
 const Icon = styled.div`
-  margin-bottom: 10px;
-  font-size: 40px;
-  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 30px;
 `;
 
 const Text3 = styled.div`
-  font-size: 20px;
-  font-weight: bolder;
+  font-size: 15px;
 `;
 
 const Footer = styled.section`

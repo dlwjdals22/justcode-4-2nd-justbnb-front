@@ -66,15 +66,19 @@ function Management() {
   }, []);
 
   useEffect(() => {
-    fetch('/data/dlwjdals/management.json', {
+    // fetch('/data/dlwjdals/management.json', {
+    console.log(localStorage.getItem('token'));
+    fetch('http://localhost:8000/reservation/host', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        accessToken: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
       .then(data => {
-        setData2(data);
+        // setData2(data);
+        console.log(data);
       });
   }, []);
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { IoLocationSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 
-export default function Hosting3() {
+export default function Hosting3({ onChange, resultChoice }) {
   const container = useRef(null);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function Hosting3() {
             </Icon>
             <Text2 placeholder="주소를 입력하세요." />
           </ButtonTextWrapper>
-          <Map style={{ width: '100%', height: '1000px' }} ref={container} />
+          <Map style={{ width: '100%', height: '610px' }} ref={container} />
         </Body>
         <Footer>
           <p>뒤로</p>
@@ -95,7 +95,6 @@ const Container2 = styled.section`
   flex-wrap: wrap;
   flex-direction: column;
 `;
-
 const Header = styled.section`
   position: absolute;
   width: 100%;
@@ -136,6 +135,23 @@ const Body = styled.section`
   justify-content: center;
 `;
 
+const ButtonTextWrapper = styled.button`
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  border-radius: 50px;
+  border: 1px solid rgba(155, 149, 167, 0.44);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  padding: 10px;
+  box-shadow: 2px 1px 5px 7px rgba(0, 0, 0, 0.14);
+  width: 75%;
+  top: 11vw;
+  display: flex;
+  align-items: center;
+`;
+
 const Icon = styled.div`
   margin-right: 10px;
   margin-left: 10px;
@@ -153,6 +169,12 @@ const Text2 = styled.textarea`
   border: none;
   resize: none;
   color: grey;
+`;
+
+const Map = styled.div`
+  position: relative;
+  z-index: -999;
+  margin: 0;
 `;
 
 const Footer = styled.section`
@@ -182,27 +204,4 @@ const Footer = styled.section`
     border: 1px solid rgba(155, 149, 167, 0.1);
     background-color: black;
   }
-`;
-
-const Map = styled.div`
-  position: relative;
-  z-index: -999;
-  margin: 0;
-`;
-
-const ButtonTextWrapper = styled.button`
-  position: absolute;
-  z-index: 999;
-  background-color: white;
-  border-radius: 50px;
-  border: 1px solid rgba(155, 149, 167, 0.44);
-  font-size: 16px;
-  font-weight: 700;
-  text-align: left;
-  padding: 16px;
-  box-shadow: 2px 1px 5px 7px rgba(0, 0, 0, 0.14);
-  width: 70%;
-  top: 20vw;
-  display: flex;
-  align-items: center;
 `;

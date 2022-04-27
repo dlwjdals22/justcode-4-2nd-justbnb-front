@@ -17,16 +17,17 @@ function LoginModal({ loginModalHandler }) {
 
   const idInput = e => {
     setInputs({ ...inputs, email: e.target.value });
-
     let regEmail =
       /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    !regEmail.test(email) ? setEmailErr(true) : setEmailErr(false);
+    !regEmail.test(email) ? setEmailErr(false) : setEmailErr(false);
+    // !regEmail.test(email) ? setEmailErr(true) : setEmailErr(false);
   };
 
   const passwordInput = e => {
     setInputs({ ...inputs, password: e.target.value });
     let regPassword = /(?=.*\d)(?=.*[a-zA-ZS]).{8,20}/;
-    !regPassword.test(password) ? setPasswordErr(true) : setPasswordErr(false);
+    !regPassword.test(password) ? setPasswordErr(false) : setPasswordErr(false);
+    // !regPassword.test(password) ? setPasswordErr(true) : setPasswordErr(false);
   };
 
   const errHandler = () => {
@@ -37,6 +38,9 @@ function LoginModal({ loginModalHandler }) {
     }
   };
   const postLogin = () => {
+    console.log(1);
+    console.log(email);
+    console.log(password);
     errHandler();
     fetch('http://localhost:8000/user/signin', {
       method: 'POST',

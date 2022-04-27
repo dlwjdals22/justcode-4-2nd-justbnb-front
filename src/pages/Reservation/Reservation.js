@@ -11,7 +11,8 @@ function Reservation() {
   };
 
   useEffect(() => {
-    fetch('/data/dlwjdals/reservation.json', {
+    fetch('http://localhost:8000/reservation/guest', {
+      // fetch('/data/dlwjdals/reservation.json', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +20,8 @@ function Reservation() {
     })
       .then(res => res.json())
       .then(data => {
-        setData2(data);
+        console.log(data);
+        // setData2(data);
       });
   }, []);
 

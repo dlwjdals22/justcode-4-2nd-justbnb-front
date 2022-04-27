@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 // const Say = () => {
@@ -14,9 +15,14 @@ import { useState } from 'react';
 // };
 
 export default function Hosting({ onChange, resultChoice }) {
+  // const [color, setColor] = useState('');
+
   return (
     <Wrapper>
       <Container>
+        <Link to="/">
+          <img src="/images/로고화이트.png" />
+        </Link>
         <Text1>
           호스팅할 숙소 유형을
           <br />
@@ -27,13 +33,12 @@ export default function Hosting({ onChange, resultChoice }) {
       <Container2>
         <Header>
           <button className="help-button">도움말</button>
-          <button className="exit-button">나가기</button>
+          <Link to="/">
+            <button className="exit-button">나가기</button>
+          </Link>
         </Header>
         <Body>
-          {/* <<<<<<< HEAD
-          <Button>
-            <div className="but-name">아파트</div> */}
-          {/* ======= */}
+          {/* <div onClickEnter={() => setIsClicking(true)} /> */}
           <Button id="1" onClick={e => onChange(e)} value="아파트">
             <div className="but-name">아파트</div>
             <div className="img-wrapper">
@@ -84,6 +89,14 @@ const Container = styled.section`
   display: flex;
   align-items: center;
   line-height: 3.5em;
+  img {
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    margin-top: 30px;
+    margin-left: 40px;
+  }
 `;
 
 const Text1 = styled.div`
@@ -127,6 +140,9 @@ const Header = styled.section`
     margin-right: 30px;
     border: 1px solid rgba(155, 149, 167, 0);
     background-color: rgba(155, 149, 167, 0.1);
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
